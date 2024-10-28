@@ -1,5 +1,4 @@
 #include "rtc.h"
-#include "led.h"
 #include "delay.h"
 #include "usart.h" 
 //////////////////////////////////////////////////////////////////////////////////	 
@@ -62,11 +61,12 @@ u8 My_RTC_Init(void)
 	if(RTC_ReadBackupRegister(RTC_BKP_DR0)!=0x5050)		//是否第一次配置?
 	{
 		RCC_LSEConfig(RCC_LSE_ON);//LSE 开启    
-		while (RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET)	//检查指定的RCC标志位设置与否,等待低速晶振就绪
+		/*while (RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET)	//检查指定的RCC标志位设置与否,等待低速晶振就绪
 			{
 			retry++;
 			delay_ms(10);
-			}
+			}*/
+		
 		if(retry==0)return 1;		//LSE 开启失败. 
 			
 		RCC_RTCCLKConfig(RCC_RTCCLKSource_LSE);		//设置RTC时钟(RTCCLK),选择LSE作为RTC时钟    
@@ -77,8 +77,8 @@ u8 My_RTC_Init(void)
     RTC_InitStructure.RTC_HourFormat   = RTC_HourFormat_24;//RTC设置为,24小时格式
     RTC_Init(&RTC_InitStructure);
  
-		RTC_Set_Time(11,01,56,RTC_H12_PM);	//设置时间
-		RTC_Set_Date(24,10,17,4);		//设置日期
+		RTC_Set_Time(14,59,56,RTC_H12_PM);	//设置时间
+		RTC_Set_Date(14,5,5,6);		//设置日期
 	 
 		RTC_WriteBackupRegister(RTC_BKP_DR0,0x5050);	//标记已经初始化过了
 	} 
@@ -186,7 +186,20 @@ void RTC_WKUP_IRQHandler(void)
 	if(RTC_GetFlagStatus(RTC_FLAG_WUTF)==SET)//WK_UP中断?
 	{ 
 		RTC_ClearFlag(RTC_FLAG_WUTF);	//清除中断标志
-		LED1=!LED1; 
+		//LED1=!LED1; 
 	}   
 	EXTI_ClearITPendingBit(EXTI_Line22);//清除中断线22的中断标志 								
 }
+ 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,6 +12,7 @@ void PWM_init_servo(void)
 	
 	GPIO_PinAFConfig(GPIOC,GPIO_PinSource6,GPIO_AF_TIM3);                     //PC6复用为TIM3
 	GPIO_PinAFConfig(GPIOC,GPIO_PinSource7,GPIO_AF_TIM3);   
+	GPIO_PinAFConfig(GPIOC,GPIO_PinSource8,GPIO_AF_TIM3); 
 	
 	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;
@@ -43,7 +44,7 @@ void PWM_init_servo(void)
 	TIM_OC3Init(TIM3, &TIM_OCInitStruct);
 	TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);
 	
-	//TIM_ARRPreloadConfig(TIM3,ENABLE);                                        //使能TIM4在ARR上的预装载寄存器
+	TIM_ARRPreloadConfig(TIM3,ENABLE);                                        //使能TIM4在ARR上的预装载寄存器
 	TIM_Cmd(TIM3, ENABLE);                                                    //TIM4使能
 	
 	TIM_CtrlPWMOutputs(TIM3, ENABLE);                                         //使能主输出

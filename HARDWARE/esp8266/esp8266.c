@@ -34,7 +34,7 @@ void esp8266_init(void)
 		//USART_DeInit(USART3);
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);
 		// ???? USART3 ????
-    USART_InitStructure.USART_BaudRate = 115200;
+    USART_InitStructure.USART_BaudRate = 9600;
     USART_InitStructure.USART_WordLength = USART_WordLength_8b;
     USART_InitStructure.USART_StopBits = USART_StopBits_1;
     USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -70,7 +70,7 @@ void USART3_IRQHandler(void){
 			}else if(RxState==1){
 				esp8266_Serial_Buffer[pRxPacket] = esp8266_data;
 				pRxPacket++;
-				if(pRxPacket>=2){
+				if(pRxPacket>=3){
 					RxState=2;
 					pRxPacket=0;
 				}
@@ -121,8 +121,14 @@ void esp8266_prinf(char *format,...){
 	esp8266_sendString(String);
 }
 
-void esp_sendcmd(char *String){
+void esp_sendcmd(uint8_t Byte){
 	esp8266_sendbyte(0x55);
-	esp8266_sendString(String);
+	esp8266_sendbyte(Byte);
+	esp8266_sendbyte(0xff);
+}
+
+void esp_uploaddata(uint8_t *Array, uint16_t len){
+	esp8266_sendbyte(0x55);
+	esp8266_sendArray(Array,len);
 	esp8266_sendbyte(0xff);
 }

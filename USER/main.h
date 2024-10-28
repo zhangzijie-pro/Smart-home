@@ -6,8 +6,6 @@
 #include "delay.h"
 #include "freertos_demo.h"
 
-//#include "led.h"
-#include "key.h"
 
 //servo
 #include "Servo.h"
@@ -43,5 +41,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "math.h"
 
 #endif

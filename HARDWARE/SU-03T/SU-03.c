@@ -1,7 +1,7 @@
 #include "SU-03.h"
 
 
-uint8_t SU_Serial_Buffer[2];
+uint8_t SU_Serial_Buffer[3];
 uint8_t SU_receive_ok_flag=0;
 uint8_t SU_counter=0;
 
@@ -67,7 +67,7 @@ void USART2_IRQHandler(void){
 			}else if(RxState==2){
 				SU_Serial_Buffer[pRxPacket] = SU_data;
 				pRxPacket++;
-				if(pRxPacket>=2){
+				if(pRxPacket>=3){
 					RxState=3;
 					pRxPacket=0;
 				}

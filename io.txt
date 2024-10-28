@@ -1,27 +1,37 @@
 VCC : 5v若干    GND: 若干
 确定:
     输出引脚:
-        升温: PF0  降温: PF1
-        加湿: PE5  除湿: PE6
+        升温: PE4  降温: PF0
+        加湿: PE6  除湿: PE5
         客厅灯: PE0
         走廊灯: PE1
         卧室灯: PE2
         厕所灯: PE3
-        厨房灯: PE4
+        厨房灯: PE7
+        路灯:   PG5
+        厕所风扇: PG4
+        晾衣杆信号线： C11  ———— A25
     输入引脚:
-        红外：   PB9
+        红外人体：   PB9
         雨滴:    PB8
         火焰:    PB7
     舵机:
-        PC6  PC7
+        PC6  PC7  PC8    窗户,晾衣杆，门
     温湿度:
         PG9
     串口屏幕:
-        PA0 PA1
+        PA0   —————— Rx 
+        PA1   —————— Tx
     语音:
-        PA2 PA3
+        PA2   —————— Rx B6
+        PA3   —————— Tx B7
     AD采集: 
-        PA5 PA6
+        PA5 ———— 烟雾 
+        PA4 ———— CO
     esp8266:
-        PB10 PB11
-    BH1750: 2线 PB4 PB5
+        PB10  —————— Rx
+        PB11  —————— Tx
+    氛围灯:
+        RED PC1
+        GREEN PC2
+        BLUE PC3

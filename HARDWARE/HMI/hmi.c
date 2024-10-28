@@ -10,7 +10,7 @@ void HMI_init(void)
 		USART_InitTypeDef USART_InitStructure;
     GPIO_InitTypeDef GPIO_InitStructure;
 		NVIC_InitTypeDef NVIC_InitStructure;
-	
+		
 		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 	
 		// ���� GPIO ����

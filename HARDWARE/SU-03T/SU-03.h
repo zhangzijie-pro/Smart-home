@@ -15,7 +15,7 @@ void SU_prinf(char *format,...);
 void SU_sendCmd(char *String);
 
 
-extern uint8_t SU_Serial_Buffer[2];
+extern uint8_t SU_Serial_Buffer[3];
 extern uint8_t SU_receive_ok_flag;
 extern uint8_t SU_counter;
 extern uint8_t SU_data;

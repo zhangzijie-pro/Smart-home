@@ -23,7 +23,7 @@ void Rain_Init(void)
  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN; 	//初始化设置为输入状态 
  GPIO_Init(GPIOB, &GPIO_InitStructure);				
 	
- //GPIO_ResetBits(GPIOB,GPIO_Pin_6);
+ GPIO_ResetBits(GPIOB,GPIO_Pin_8);
 }
 
 
